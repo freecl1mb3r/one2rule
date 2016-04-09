@@ -1,0 +1,9 @@
+public/css/*
+public/js/*
+public/jsbower
+public/*.html
+src/localization/*.mo
+src/localization/*.json
+dist
+public/webphone
+node_modules

@@ -1,0 +1,204 @@
+@import "colors";
+@import "header";
+
+html {
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-family: "Open Sans";
+    background-color: @greyBackground;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.height-100-percent {
+    height: 100%;
+}
+.react-grid-item {
+    //-webkit-transition: border-color 0.3s, background-color 0.3s, opacity 0.3s; /* Safari */
+    //   -moz-transition: border-color 0.3s, background-color 0.3s, opacity 0.3s;
+    //     -o-transition: border-color 0.3s, background-color 0.3s, opacity 0.3s;
+    //        transition: border-color 0.3s, background-color 0.3s, opacity 0.3s;
+    background-color: @white;
+    border: solid 0px @lightGreyBackground;
+    &:hover {
+        border: solid 0px @blue;
+    }
+    span {
+        margin: auto;
+    }
+}
+
+#main-holder {
+    width: 100%;
+    height: 100%;
+}
+#main {
+    width: 100%;
+    height: 100%;
+}
+#content-grid-holder {
+    position: relative;
+    top: 46px;
+    width: 100%;
+    height: ~"calc(100% - 46px)";
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#status-bar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 46px;
+    background-color: @white;
+    .section {
+        display: inline-block;
+    }
+    .icon {
+        display: inline-block;
+        cursor: pointer;
+    }
+    .view-mode-icon-holder {
+        display: inline-block;
+    }
+}
+
+.content-grid {
+}
+.react-grid-item {
+    position: relative;
+    .widget {
+        //width: 100%;
+        //height: 100%;
+    }
+    .widget-title {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        height: 20px;
+        background-color: @lightGreyBackground;
+        .text {
+            display: none;
+            color: @darkGrey;
+            margin-left: 20px;
+        }
+        .button {
+            height: 100%;
+            cursor: pointer;
+            &.left {
+                float: left;
+                margin-left: 4px;
+            }
+            &.right {
+                float: right;
+                margin-right: 4px;
+            }
+            &.more {
+                font-size: 5px;
+                margin-right: 6px;
+            }
+        }
+        .icon {
+            line-height: 20px;
+            color: @darkGrey;
+        }
+    }
+    .widget-content {
+        //position: relative;
+        //top: 0px;
+        position: absolute;
+        top: 20px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        border: solid 0px @lightGreyBackground;
+        background-color: @white;
+    }
+    &:hover {
+        .widget-title {
+            background-color: @blue;
+            .text {
+                color: @grey;
+            }
+            .icon {
+                color: @white;
+            }
+        }
+        .widget-content {
+            border-left: solid 2px @blue;
+            border-right: solid 2px @blue;
+            border-bottom: solid 2px @blue;
+            background-color: @white;
+            > div {
+                overflow: hidden;
+                > div {
+                    margin-left: -2px;
+                    margin-right: -2px;
+                }
+            }
+        }
+    }
+}
+
+.data-field {
+    height: 39px;
+    border-top: solid 1px @grey;
+    font-size: 0px;
+    .icon {
+        float: left;
+        top: 0px;
+        width: 39px;
+        height: 100%;
+        border-right: solid 1px @grey;
+        vertical-align: middle;
+        span.icon {
+            color: @grey;
+            margin-left: 8px;
+            font-size: 24px;
+            line-height:38px;
+            border-right: solid 0px @grey;
+        }
+    }
+    .data {
+        float: right;
+        width: ~"calc(100% - 40px)";
+        height: 100%;
+        .data-field-label {
+            margin-left: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height:38px;
+            &:hover.can-edit {
+                color: @blue;
+                background-color: @lightBlue;
+                cursor: pointer;
+                border-bottom: dashed 1px @blue;
+            }
+        }
+        .data-field-editor {
+            height: 100%;
+            width: 100%;
+            font-size: 12px;
+            font-weight: 700;
+            line-height:38px;
+            color: @blue;
+            /*background-color: @lightBlue;*/
+            border: solid 1px @lightBlue;
+            padding-left: 8px;
+        }
+    }
+}
