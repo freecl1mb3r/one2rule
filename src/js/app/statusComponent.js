@@ -20,9 +20,6 @@ module.exports = React.createClass ({
     setViewMode : function (mode) {
         this.props.main.setViewMode(mode);
     },
-    redrawGrid : function () {
-        this.props.main.refs['grid'].forceUpdate();
-    },
 
     applyViewMode : function (mode) {
         var icons = this.state.viewModeIcons;
@@ -30,6 +27,11 @@ module.exports = React.createClass ({
             if (key == mode) this.refs[key].setState({selected: true});
             else this.refs[key].setState({selected: false});
         });
+    },
+
+    toggleMenu : function (e) {
+        e.stopPropagation()
+        this.props.main.refs['menu'].toggle();
     },
 
     render : function () {
@@ -40,14 +42,16 @@ module.exports = React.createClass ({
         return (
             <div id="status-bar">
                 <div className="section">
+                    <div onClick={this.toggleMenu} className={'menu-icon'}> 
+                        <span className={'icon icon-menu'}></span>
+                    </div>
+                </div>
+                <div className="section">
                     {Object.keys(icons).map(function (key, index) {
                         return icons[key];
                     })}
                 </div>
-                <div className="section text">Status component (view mode: {this.props.main.state.viewMode})</div>
-                <div className="section text">
-                    <div onClick={this.redrawGrid}>Redraw Grid</div>
-                </div>
+                <div className="section text hidden">Status component (view mode: {this.props.main.state.viewMode})</div>
                 <div id="status-section-debug" className="section text">
                 </div>
             </div>

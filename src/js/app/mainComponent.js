@@ -1,5 +1,6 @@
 var StatusComponent = React.createFactory(require('./statusComponent'));
 var GridComponent = React.createFactory(require('./gridComponent'));
+var MenuComponent = React.createFactory(require('./menuComponent'));
 
 var ClientDataWidgetComponent = React.createFactory(require('./widgetClientDataComponent'));
 var ContactDataWidgetComponent = React.createFactory(require('./widgetContactDataComponent'));
@@ -51,14 +52,20 @@ module.exports = React.createClass ({
     componentDidUpdate : function () {
     },
 
+    onClick : function () {
+        this.refs['menu'].hide();
+    },
+
     render : function () {
         this.grid = this.grid || GridComponent({key: 'grid', ref: 'grid', main: this});
         this.status = this.status || StatusComponent({key: 'status', ref: 'status', main: this});
+        this.menu = this.menu || MenuComponent({key: 'menu', ref: 'menu', main: this});
 
         return (
-            <div id="main">
+            <div id="main" onClick={this.onClick}>
                 {this.grid}
                 {this.status}
+                {this.menu}
             </div>
         );
     }

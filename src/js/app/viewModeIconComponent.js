@@ -23,8 +23,7 @@ module.exports = React.createClass ({
         return (
             <div key={'view-mode-item-' + this.props.nodeId} className={'view-mode-icon-holder'}>
                 <div key={this.props.nodeId} onClick={this.setSelected.bind(null, this.props.nodeId)} className={'view-mode-icon' + selectedCss} title={this.props.textTitle}> 
-                    <div key={this.props.nodeId + '.0'} className={'r r0'}></div>
-                        <span key={this.props.nodeId + '.1'} className={'icon ' + this.props.icon}></span>
+                    <span key={this.props.nodeId + '.1'} className={'icon ' + this.props.icon}></span>
                     <div key={this.props.nodeId + '.2'} className={'marker'}></div>
                 </div>
             </div>
