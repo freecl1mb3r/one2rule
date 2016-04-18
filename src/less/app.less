@@ -50,11 +50,26 @@ button:focus {
 }
 #content-grid-holder {
     position: relative;
+    top: 0px;
+    width: 100%;
+    height: ~"calc(100% - 46px)";
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.pages {
+    position: relative;
     top: 46px;
     width: 100%;
     height: ~"calc(100% - 46px)";
     overflow-y: auto;
     overflow-x: hidden;
+    .page {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+    }
 }
 
 #status-bar {
@@ -87,13 +102,28 @@ button:focus {
     left: 0px;
     width: 250px;
     bottom: 0px;
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(249, 250, 251, 0.8);
     overflow-y: auto;
     &.hidden {
         width: 0px;
     }
     &:hover {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(249, 250, 251, 0.95);
+    }
+    .menu-item {
+        -webkit-transition: background-color 0.3s, color 0.3s; /* Safari */
+           -moz-transition: background-color 0.3s, color 0.3s;
+             -o-transition: background-color 0.3s, color 0.3s;
+                transition: background-color 0.3s, color 0.3s;
+        height: 38px;
+        color: rgb(41, 108, 219);
+        line-height: 38px;
+        padding-left: 12px;
+        cursor: pointer;
+        &:hover {
+            color: rgb(249, 250, 251);
+            background-color: rgba(41, 108, 219, 0.9);
+        }
     }
 }
 

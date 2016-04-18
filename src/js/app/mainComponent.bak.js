@@ -1,8 +1,9 @@
-var PageDashboard = React.createFactory(require('./pageDashboard'));
-var PageAccounts = React.createFactory(require('./pageAccounts'));
-
 var StatusComponent = React.createFactory(require('./statusComponent'));
+var GridComponent = React.createFactory(require('./gridComponent'));
 var MenuComponent = React.createFactory(require('./menuComponent'));
+
+var ClientDataWidgetComponent = React.createFactory(require('./widgetClientDataComponent'));
+var ContactDataWidgetComponent = React.createFactory(require('./widgetContactDataComponent'));
 
 window.app.enums.viewModes = {
    desktop : 'desktop',
@@ -18,9 +19,6 @@ module.exports = React.createClass ({
             viewMode: window.app.enums.viewModes.tablet,
             widgetsCreated: false
         };
-    },
-
-    componentDidUpdate : function () {
     },
 
     getEditor : function (props, editor) {
@@ -43,26 +41,15 @@ module.exports = React.createClass ({
         if (mode == e.desktop || mode == e.tablet || mode == e.mobile)
             this.setState({viewMode: mode});
             this.refs['status'].applyViewMode(mode);
-            this.refs['pageDashboard'].forceUpdate();
-            this.refs['pageAccounts'].forceUpdate();
+            this.refs['grid'].forceUpdate();
             /*this.refs['status'].forceUpdate();*/
     },
 
-    selectPage : function (page) {
-        if (window.app.selectedPage != page) {
-            this.refs[window.app.selectedPage].setState({show: false});
-            this.refs[page].setState({show: true});
-            window.app.selectedPage = page;
-            window.setTimeout(function () {
-                $(window).resize();
-            }, 1000);
-        }
+    componentDidMount : function () {
+        this.setViewMode(window.app.enums.viewModes.tablet);
     },
 
-    buildContent : function () {
-        this.refs['pageDashboard'].buildContent();
-        this.refs['pageAccounts'].buildContent();
-        this.setViewMode(window.app.enums.viewModes.tablet);
+    componentDidUpdate : function () {
     },
 
     onClick : function () {
@@ -70,18 +57,13 @@ module.exports = React.createClass ({
     },
 
     render : function () {
-        this.pageDashboard = this.pageDashboard || PageDashboard({key: 'pageDashboard', ref: 'pageDashboard', main: this});
-        this.pageAccounts = this.pageAccounts || PageAccounts({key: 'pageAccounts', ref: 'pageAccounts', main: this});
-
+        this.grid = this.grid || GridComponent({key: 'grid', ref: 'grid', main: this});
         this.status = this.status || StatusComponent({key: 'status', ref: 'status', main: this});
         this.menu = this.menu || MenuComponent({key: 'menu', ref: 'menu', main: this});
 
         return (
             <div id="main" onClick={this.onClick}>
-                <div id="pages-holder" className="pages">
-                    {this.pageDashboard}
-                    {this.pageAccounts}
-                </div>
+                {this.grid}
                 {this.status}
                 {this.menu}
             </div>

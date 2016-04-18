@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-09 21:28-0400\n"
+"POT-Creation-Date: 2016-04-18 17:53-0400\n"
 "PO-Revision-Date: 2016-01-01 00:00+0200\n"
 "Last-Translator: CDE <info@cde.si>\n"
 "Language-Team: CDE <info@cde.si>\n"
@@ -19,6 +19,26 @@ msgstr ""
 
 #: src/js/test/test.js:7
 msgid "Colombo. Sri Lanka 2"
+msgstr ""
+
+#: src/js/app/menuComponent.js:42
+msgid "Home"
+msgstr ""
+
+#: src/js/app/menuComponent.js:45
+msgid "Accounts"
+msgstr ""
+
+#: src/js/app/menuComponent.js:48
+msgid "Sessions"
+msgstr ""
+
+#: src/js/app/menuComponent.js:51
+msgid "Orders"
+msgstr ""
+
+#: src/js/app/menuComponent.js:54
+msgid "Rates"
 msgstr ""
 
 #: src/js/app/statusComponent.js:14
